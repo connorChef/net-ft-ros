@@ -1,11 +1,9 @@
 # net-ft-ros
-[![Build Status](https://travis-ci.org/epfl-lasa/net-ft-ros.svg?branch=master)](https://travis-ci.org/epfl-lasa/net-ft-ros)
 
-ROS package for the ATI 6-axis force torque sensor.
+ROS package for the ATI 6-axis force torque sensor. The README below is copied from epfl-lasa and might not apply to the Personal Robotics Lab.
 
 ## Hardware setup
 
-TODO: description of the ATI setup, with ATI box, how to connect to ethernet and ping the box.
 
 Once you have connected the ATI box with an ethernet and power supply cable, check 
 the network connection. From your PC try and ping the FT sensor.
