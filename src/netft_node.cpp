@@ -79,7 +79,7 @@ int main(int argc, char **argv)
   ("rot",po::value<double>(&rot)->default_value(0.0),
    " roation of the frame of reference of force torque vectors")
   ("alpha",po::value<double>(&alpha)->default_value(0.0),
-   "alpha of exponential smoother, alpha \in [0,1]" )
+   "alpha of exponential smoother, alpha \\in [0,1]" )
   ("scale_x",po::value<double>(&scale_F[0])->default_value(1.0),
    " x-axis scale factor [-1 or 1]")
   ("scale_y",po::value<double>(&scale_F[1])->default_value(1.0),
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
     ROS_WARN("Publishing NetFT data as geometry_msgs::Wrench is deprecated");
   }
 
-  std::auto_ptr<netft_rdt_driver::NetFTRDTDriver> netft(new
+  std::unique_ptr<netft_rdt_driver::NetFTRDTDriver> netft(new
       netft_rdt_driver::NetFTRDTDriver(address));
   ros::Publisher pub;
   if (publish_wrench) {
