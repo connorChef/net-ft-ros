@@ -5,9 +5,9 @@ namespace netft_rdt_driver
 
 NetFTRDTDriverBias::NetFTRDTDriverBias(ros::NodeHandle& nh, double rot,
                                        const tf::Vector3& scale_F, double alpha, std::size_t num_points):
-  num_points(num_points),
+  alpha(alpha),
   scale_F(scale_F),
-  alpha(alpha)
+  num_points(num_points)
 {
   count      = 0;
   force_b.x  = 0;
