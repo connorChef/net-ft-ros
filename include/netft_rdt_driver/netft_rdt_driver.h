@@ -51,7 +51,7 @@ class NetFTRDTDriver
 {
 public:
   // Start receiving data from NetFT device
-  NetFTRDTDriver(const std::string &address);
+  NetFTRDTDriver(const std::string &address, double counts_per_force, double counts_per_torque);
 
   ~NetFTRDTDriver();
 

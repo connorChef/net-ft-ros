@@ -66,6 +66,8 @@ int main(int argc, char **argv)
   double            rot;
   double            alpha;
   tf::Vector3       scale_F;
+  double            counts_per_force;
+  double            counts_per_torque;
   string            address;
 
   po::options_description desc("Options");
@@ -86,6 +88,10 @@ int main(int argc, char **argv)
    " y-axis scale factor [-1 or 1]")
   ("scale_z",po::value<double>(&scale_F[2])->default_value(1.0),
    " z-axis scale factor [-1 or 1]")
+  ("counts_per_force",po::value<double>(&counts_per_force),
+   " bits per Newton of force")
+  ("counts_per_torque",po::value<double>(&counts_per_torque),
+   " bits per Newton-meter of torque")
   ("address", po::value<string>(&address), "IP address of NetFT box")
   ;
 
@@ -116,7 +122,7 @@ int main(int argc, char **argv)
   }
 
   std::unique_ptr<netft_rdt_driver::NetFTRDTDriver> netft(new
-      netft_rdt_driver::NetFTRDTDriver(address));
+      netft_rdt_driver::NetFTRDTDriver(address, counts_per_force, counts_per_torque));
   ros::Publisher pub;
   if (publish_wrench) {
     pub = nh.advertise<geometry_msgs::Wrench>("netft_data", 100);

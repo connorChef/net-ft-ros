@@ -122,7 +122,7 @@ void RDTCommand::pack(uint8_t *buffer) const
 }
 
 
-NetFTRDTDriver::NetFTRDTDriver(const std::string &address) :
+NetFTRDTDriver::NetFTRDTDriver(const std::string &address, double counts_per_force, double counts_per_torque) :
   address_(address),
   socket_(io_service_),
   stop_recv_thread_(false),
@@ -142,12 +142,6 @@ NetFTRDTDriver::NetFTRDTDriver(const std::string &address) :
   socket_.open(udp::v4());
   socket_.connect(netft_endpoint);
 
-  // TODO : Get/Set Force/Torque scale for device
-  // Force/Sclae is based on counts per force/torque value from device
-  // these value are manually read from device webserver, but in future they
-  // may be collected using http get requests
-  static const double counts_per_force = 224808.9375;
-  static const double counts_per_torque = 8850746;
   force_scale_ = 1.0 / counts_per_force;
   torque_scale_ = 1.0 / counts_per_torque;
 
